@@ -5,18 +5,20 @@
 const slides = document.querySelectorAll(".hero-slide");
 const dots = document.querySelectorAll(".slider-dot");
 
-const previousButton = document.querySelector(".slider-prev");
 const nextButton = document.querySelector(".slider-next");
+const previousButton = document.querySelector(".slider-prev");
 
 let currentSlide = 0;
-let sliderInterval;
+let sliderTimer;
 
 
-/* -----------------------------------------
-   Show Slide
------------------------------------------ */
+/* SHOW SLIDE */
 
 function showSlide(index) {
+
+    if (slides.length === 0) {
+        return;
+    }
 
     if (index >= slides.length) {
         currentSlide = 0;
@@ -49,9 +51,7 @@ function showSlide(index) {
 }
 
 
-/* -----------------------------------------
-   Next Slide
------------------------------------------ */
+/* NEXT */
 
 function nextSlide() {
 
@@ -60,9 +60,7 @@ function nextSlide() {
 }
 
 
-/* -----------------------------------------
-   Previous Slide
------------------------------------------ */
+/* PREVIOUS */
 
 function previousSlide() {
 
@@ -71,13 +69,15 @@ function previousSlide() {
 }
 
 
-/* -----------------------------------------
-   Automatic Slider
------------------------------------------ */
+/* START AUTOMATIC SLIDER */
 
 function startSlider() {
 
-    sliderInterval = setInterval(
+    if (slides.length <= 1) {
+        return;
+    }
+
+    sliderTimer = setInterval(
         nextSlide,
         5000
     );
@@ -85,26 +85,22 @@ function startSlider() {
 }
 
 
-/* -----------------------------------------
-   Reset Timer
------------------------------------------ */
+/* RESET SLIDER TIMER */
 
 function resetSlider() {
 
-    clearInterval(sliderInterval);
+    clearInterval(sliderTimer);
 
     startSlider();
 
 }
 
 
-/* -----------------------------------------
-   Next Button
------------------------------------------ */
+/* NEXT BUTTON */
 
 if (nextButton) {
 
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("click", function() {
 
         nextSlide();
 
@@ -115,13 +111,11 @@ if (nextButton) {
 }
 
 
-/* -----------------------------------------
-   Previous Button
------------------------------------------ */
+/* PREVIOUS BUTTON */
 
 if (previousButton) {
 
-    previousButton.addEventListener("click", () => {
+    previousButton.addEventListener("click", function() {
 
         previousSlide();
 
@@ -132,13 +126,11 @@ if (previousButton) {
 }
 
 
-/* -----------------------------------------
-   Slider Dots
------------------------------------------ */
+/* DOTS */
 
-dots.forEach((dot, index) => {
+dots.forEach(function(dot, index) {
 
-    dot.addEventListener("click", () => {
+    dot.addEventListener("click", function() {
 
         showSlide(index);
 
@@ -149,9 +141,7 @@ dots.forEach((dot, index) => {
 });
 
 
-/* -----------------------------------------
-   Start
------------------------------------------ */
+/* INITIALIZE */
 
 showSlide(0);
 
@@ -159,28 +149,27 @@ startSlider();
 
 
 /* =========================================
-   MOBILE MENU
+   MOBILE NAVIGATION
 ========================================= */
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav");
 
+
 if (menuToggle && nav) {
 
-    menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener("click", function() {
 
         nav.classList.toggle("open");
 
     });
 
 
-    /* Close menu after clicking a link */
-
     const navLinks = nav.querySelectorAll("a");
 
-    navLinks.forEach(link => {
+    navLinks.forEach(function(link) {
 
-        link.addEventListener("click", () => {
+        link.addEventListener("click", function() {
 
             nav.classList.remove("open");
 
