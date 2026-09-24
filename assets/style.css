@@ -1,7 +1,3 @@
-/* =========================================
-   RESET
-========================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +11,7 @@ html {
 body {
     font-family: "Montserrat", sans-serif;
     color: #24322f;
-    background: #ffffff;
+    background: #fff;
     line-height: 1.7;
 }
 
@@ -29,32 +25,24 @@ a {
     text-decoration: none;
 }
 
-
-/* =========================================
-   VARIABLES
-========================================= */
-
 :root {
     --dark: #18332d;
     --dark-2: #102722;
     --green: #557d68;
-    --light-green: #dce8df;
     --cream: #f5f1e8;
-    --white: #ffffff;
+    --white: #fff;
     --gold: #c7a66a;
-    --text: #24322f;
     --muted: #6f7c77;
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 
 .site-header {
     position: absolute;
     top: 0;
     left: 0;
+
     width: 100%;
     z-index: 100;
 
@@ -63,17 +51,23 @@ a {
     justify-content: space-between;
 
     padding: 28px 6%;
-    color: #ffffff;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.inner-header {
+    position: absolute;
 }
 
 .logo {
     font-family: "Cormorant Garamond", serif;
+
     font-size: 27px;
     font-weight: 600;
+
     letter-spacing: 3px;
-    white-space: nowrap;
 }
 
 .logo span {
@@ -82,7 +76,6 @@ a {
 
 .nav {
     display: flex;
-    align-items: center;
     gap: 34px;
 }
 
@@ -91,16 +84,18 @@ a {
 
     font-size: 12px;
     font-weight: 500;
+
     letter-spacing: 1.5px;
     text-transform: uppercase;
 
-    transition: 0.3s ease;
+    transition: .3s;
 }
 
 .nav a::after {
     content: "";
 
     position: absolute;
+
     left: 0;
     bottom: -8px;
 
@@ -109,16 +104,17 @@ a {
 
     background: var(--gold);
 
-    transition: width 0.3s ease;
+    transition: .3s;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: var(--gold);
 }
 
 .nav a:hover::after,
 .nav a.active::after {
     width: 100%;
-}
-
-.nav a:hover {
-    color: var(--gold);
 }
 
 .menu-toggle {
@@ -128,7 +124,8 @@ a {
     height: 42px;
 
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.5);
+
+    border: 1px solid rgba(255,255,255,.5);
 
     cursor: pointer;
 }
@@ -141,54 +138,43 @@ a {
 
     margin: 5px auto;
 
-    background: #ffffff;
+    background: #fff;
 }
 
 
-/* =========================================
-   HERO SLIDER
-========================================= */
+/* HERO */
 
 .hero-slider {
     position: relative;
 
-    width: 100%;
     height: 100vh;
     min-height: 680px;
 
     overflow: hidden;
 
-    background: #18332d;
+    background: var(--dark);
 }
-
-
-/* Background slides */
 
 .hero-slide {
     position: absolute;
     inset: 0;
 
-    background-size: cover;
     background-position: center;
+    background-size: cover;
 
     opacity: 0;
 
-    transform: scale(1.05);
+    transform: scale(1.06);
 
     transition:
         opacity 1.4s ease,
         transform 6s ease;
-
-    z-index: 1;
 }
 
 .hero-slide.active {
     opacity: 1;
     transform: scale(1);
 }
-
-
-/* Dark overlay */
 
 .hero-overlay {
     position: absolute;
@@ -199,15 +185,10 @@ a {
     background:
         linear-gradient(
             90deg,
-            rgba(5, 25, 20, 0.65),
-            rgba(5, 25, 20, 0.28)
+            rgba(5,25,20,.68),
+            rgba(5,25,20,.28)
         );
-
-    pointer-events: none;
 }
-
-
-/* Hero content */
 
 .hero-content {
     position: relative;
@@ -217,24 +198,23 @@ a {
     width: 90%;
     max-width: 1000px;
 
-    margin: 0 auto;
+    margin: auto;
 
     padding-top: 185px;
 
     text-align: center;
 
-    color: #ffffff;
+    color: #fff;
 }
 
 .hero-eyebrow {
     margin-bottom: 18px;
 
+    color: #e2c88e;
+
     font-size: 12px;
-    font-weight: 500;
 
     letter-spacing: 4px;
-
-    color: #e2c88e;
 }
 
 .hero-content h1 {
@@ -244,12 +224,7 @@ a {
 
     font-weight: 500;
 
-    line-height: 0.85;
-
-    letter-spacing: 2px;
-
-    text-shadow:
-        0 4px 30px rgba(0,0,0,0.25);
+    line-height: .85;
 }
 
 .hero-content h1 span {
@@ -259,20 +234,12 @@ a {
 .hero-description {
     max-width: 580px;
 
-    margin: 35px auto 38px;
+    margin: 35px auto;
+
+    color: rgba(255,255,255,.9);
 
     font-size: 16px;
-    font-weight: 300;
-
-    line-height: 1.8;
-
-    color: rgba(255,255,255,0.9);
 }
-
-
-/* =========================================
-   BUTTONS
-========================================= */
 
 .hero-buttons {
     display: flex;
@@ -281,6 +248,9 @@ a {
 
     gap: 15px;
 }
+
+
+/* BUTTONS */
 
 .btn {
     display: inline-flex;
@@ -299,58 +269,51 @@ a {
 
     text-transform: uppercase;
 
-    transition: all 0.3s ease;
+    transition: .3s;
 }
 
 .btn-primary {
-    color: #ffffff;
     background: var(--gold);
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background: #ddbf80;
-
+    background: #dfbf7d;
     transform: translateY(-3px);
 }
 
 .btn-outline {
-    color: #ffffff;
+    color: #fff;
 
-    border: 1px solid rgba(255,255,255,0.65);
-
-    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,.7);
 }
 
 .btn-outline:hover {
-    background: #ffffff;
+    background: #fff;
     color: var(--dark);
 }
 
 .btn-dark {
-    color: #ffffff;
+    color: #fff;
     background: var(--dark);
 }
 
 .btn-dark:hover {
     background: var(--green);
-
-    transform: translateY(-3px);
 }
 
 .btn-light {
     color: var(--dark);
-    background: #ffffff;
+    background: #fff;
 }
 
 .btn-light:hover {
     background: var(--gold);
-    color: #ffffff;
+    color: #fff;
 }
 
 
-/* =========================================
-   SLIDER ARROWS
-========================================= */
+/* SLIDER */
 
 .slider-arrow {
     position: absolute;
@@ -364,21 +327,17 @@ a {
     width: 54px;
     height: 54px;
 
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,.5);
 
-    background: rgba(0,0,0,0.12);
+    background: rgba(0,0,0,.12);
 
-    color: #ffffff;
-
-    font-size: 18px;
+    color: #fff;
 
     cursor: pointer;
-
-    transition: 0.3s ease;
 }
 
 .slider-arrow:hover {
-    background: #ffffff;
+    background: #fff;
     color: var(--dark);
 }
 
@@ -390,16 +349,11 @@ a {
     right: 35px;
 }
 
-
-/* =========================================
-   SLIDER DOTS
-========================================= */
-
 .slider-dots {
     position: absolute;
 
-    left: 50%;
     bottom: 50px;
+    left: 50%;
 
     transform: translateX(-50%);
 
@@ -419,11 +373,9 @@ a {
     border: 0;
     border-radius: 50%;
 
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,.5);
 
     cursor: pointer;
-
-    transition: 0.3s ease;
 }
 
 .slider-dot.active {
@@ -434,25 +386,21 @@ a {
     background: #e2c88e;
 }
 
-
-/* =========================================
-   SCROLL INDICATOR
-========================================= */
-
 .scroll-down {
     position: absolute;
 
-    bottom: 38px;
     right: 6%;
+    bottom: 38px;
 
     z-index: 10;
 
     display: flex;
+
     align-items: center;
 
     gap: 12px;
 
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,.8);
 
     font-size: 9px;
 
@@ -465,13 +413,11 @@ a {
     width: 1px;
     height: 45px;
 
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,.6);
 }
 
 
-/* =========================================
-   GENERAL SECTIONS
-========================================= */
+/* GENERAL */
 
 .section {
     padding: 120px 6%;
@@ -481,7 +427,7 @@ a {
     width: 100%;
     max-width: 1250px;
 
-    margin: 0 auto;
+    margin: auto;
 }
 
 .section-label {
@@ -493,6 +439,7 @@ a {
     font-weight: 600;
 
     letter-spacing: 3px;
+
     text-transform: uppercase;
 }
 
@@ -511,11 +458,13 @@ a {
 
 .section-heading h2,
 .welcome-text h2,
+.pool-intro h2,
 .pool-content h2,
-.cta-content h2 {
+.pool-rules h2,
+.pool-cta-box h2 {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(45px, 5vw, 70px);
+    font-size: clamp(45px,5vw,70px);
 
     font-weight: 500;
 
@@ -526,23 +475,15 @@ a {
 
 .section-heading h2 span,
 .welcome-text h2 span,
+.pool-intro h2 span,
 .pool-content h2 span,
-.cta-content h2 span {
+.pool-rules h2 span,
+.pool-cta-box h2 span {
     color: var(--green);
 }
 
-.section-heading > p:last-child {
-    margin-top: 25px;
 
-    color: var(--muted);
-
-    font-size: 15px;
-}
-
-
-/* =========================================
-   WELCOME
-========================================= */
+/* WELCOME */
 
 .welcome {
     background: var(--cream);
@@ -573,9 +514,9 @@ a {
 }
 
 .welcome-image {
-    flex: 1;
-
     position: relative;
+
+    flex: 1;
 }
 
 .welcome-image::before {
@@ -590,14 +531,10 @@ a {
     height: 100%;
 
     border: 1px solid var(--gold);
-
-    z-index: 0;
 }
 
 .welcome-image img {
     position: relative;
-
-    z-index: 1;
 
     height: 600px;
 
@@ -615,42 +552,35 @@ a {
     font-weight: 600;
 
     letter-spacing: 1.5px;
+
     text-transform: uppercase;
 
     border-bottom: 1px solid var(--gold);
-
-    padding-bottom: 5px;
 }
 
 
-/* =========================================
-   ROOMS
-========================================= */
-
-.rooms-preview {
-    background: #ffffff;
-}
+/* ROOMS */
 
 .room-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 25px;
 }
 
 .room-card {
-    background: #ffffff;
+    background: #fff;
 
     border: 1px solid #e8e8e8;
 
-    transition: 0.4s ease;
+    transition: .4s;
 }
 
 .room-card:hover {
     transform: translateY(-8px);
 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,.08);
 }
 
 .room-image {
@@ -664,7 +594,7 @@ a {
 
     object-fit: cover;
 
-    transition: transform 0.6s ease;
+    transition: .6s;
 }
 
 .room-card:hover .room-image img {
@@ -689,10 +619,9 @@ a {
 .room-content h3 {
     margin-bottom: 12px;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
 
     font-size: 32px;
-    font-weight: 600;
 
     color: var(--dark);
 }
@@ -711,17 +640,15 @@ a {
     align-items: center;
     justify-content: space-between;
 
-    gap: 15px;
-
     margin-top: 20px;
 
     padding-top: 20px;
 
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #eee;
 }
 
 .room-bottom strong {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
 
     font-size: 26px;
 
@@ -729,7 +656,7 @@ a {
 }
 
 .room-bottom small {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat",sans-serif;
 
     font-size: 9px;
 
@@ -754,9 +681,7 @@ a {
 }
 
 
-/* =========================================
-   POOL SECTION
-========================================= */
+/* POOL FEATURE */
 
 .pool-section {
     display: flex;
@@ -771,7 +696,6 @@ a {
 }
 
 .pool-image img {
-    width: 100%;
     height: 100%;
 
     object-fit: cover;
@@ -788,13 +712,13 @@ a {
 
     padding: 80px 7%;
 
-    color: #ffffff;
+    color: #fff;
 }
 
 .pool-content h2 {
-    color: #ffffff;
-
     margin-bottom: 25px;
+
+    color: #fff;
 }
 
 .pool-content h2 span {
@@ -804,7 +728,7 @@ a {
 .pool-content > p:not(.section-label) {
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,.7);
 
     font-size: 15px;
 }
@@ -826,13 +750,13 @@ a {
 
     padding: 16px 0;
 
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
 .pool-features strong {
     color: #d6bd84;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
 
     font-size: 22px;
 }
@@ -846,9 +770,7 @@ a {
 }
 
 
-/* =========================================
-   AMENITIES
-========================================= */
+/* AMENITIES */
 
 .amenities {
     background: var(--cream);
@@ -857,7 +779,7 @@ a {
 .amenity-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 20px;
 }
@@ -867,7 +789,7 @@ a {
 
     text-align: center;
 
-    background: #ffffff;
+    background: #fff;
 
     border: 1px solid #e7e2d8;
 }
@@ -875,15 +797,15 @@ a {
 .amenity-icon {
     margin-bottom: 20px;
 
-    font-size: 28px;
-
     color: var(--gold);
+
+    font-size: 28px;
 }
 
 .amenity h3 {
     margin-bottom: 10px;
 
-    font-family: "Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond",serif;
 
     font-size: 25px;
 
@@ -897,9 +819,447 @@ a {
 }
 
 
-/* =========================================
-   BOOKING CTA
-========================================= */
+/* PAGE HERO */
+
+.page-hero {
+    position: relative;
+
+    height: 600px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #fff;
+
+    background-image: url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.pool-hero {
+    background-image: url("https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=2000&q=85");
+}
+
+.gallery-hero {
+    background-image: url("https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2000&q=85");
+}
+
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(8,31,25,.58);
+}
+
+.page-hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 120px 20px 0;
+}
+
+.page-hero-content h1 {
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(60px,8vw,100px);
+
+    font-weight: 500;
+
+    line-height: .9;
+}
+
+.page-hero-content h1 span {
+    color: #e2c88e;
+}
+
+.page-hero-content p:last-child {
+    margin-top: 25px;
+
+    color: rgba(255,255,255,.85);
+}
+
+
+/* ROOMS PAGE */
+
+.large-room-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    margin-bottom: 50px;
+
+    background: var(--cream);
+}
+
+.large-room-card.reverse .large-room-image {
+    order: 2;
+}
+
+.large-room-card.reverse .large-room-info {
+    order: 1;
+}
+
+.large-room-image {
+    min-height: 520px;
+}
+
+.large-room-image img {
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.large-room-info {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 60px;
+}
+
+.large-room-info h2 {
+    margin-bottom: 20px;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 52px;
+
+    line-height: 1;
+
+    color: var(--dark);
+}
+
+.large-room-info > p:not(.room-type) {
+    margin-bottom: 25px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.room-details {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.room-details span {
+    padding: 8px 12px;
+
+    background: #fff;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.large-room-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.large-room-bottom div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.large-room-bottom div > small {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+.large-room-bottom strong {
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 35px;
+
+    color: var(--dark);
+}
+
+.large-room-bottom strong small {
+    font-family: "Montserrat",sans-serif;
+
+    font-size: 9px;
+
+    color: var(--muted);
+}
+
+.booking-info {
+    background: #fff;
+}
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 20px;
+}
+
+.info-card {
+    padding: 35px;
+
+    text-align: center;
+
+    background: var(--cream);
+}
+
+.info-card h3 {
+    margin-bottom: 8px;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 27px;
+
+    color: var(--dark);
+}
+
+.info-card p {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+/* POOLS PAGE */
+
+.pool-intro {
+    max-width: 750px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+.pool-intro h2 {
+    margin-bottom: 25px;
+}
+
+.pool-intro > p:last-child {
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+.pool-card-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 25px;
+}
+
+.pool-card {
+    background: var(--cream);
+}
+
+.pool-card-image {
+    height: 350px;
+
+    overflow: hidden;
+}
+
+.pool-card-image img {
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .5s;
+}
+
+.pool-card:hover img {
+    transform: scale(1.05);
+}
+
+.pool-card-content {
+    padding: 30px;
+}
+
+.pool-card-content h3 {
+    margin-bottom: 15px;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: 32px;
+
+    color: var(--dark);
+}
+
+.pool-card-content > p:not(.room-type) {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.pool-meta {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(0,0,0,.1);
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    letter-spacing: .5px;
+}
+
+.pool-rules {
+    padding: 100px 6%;
+
+    background: var(--dark);
+
+    color: #fff;
+}
+
+.pool-rules-inner {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.pool-rules h2 {
+    color: #fff;
+}
+
+.rules-list p {
+    padding: 12px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.15);
+
+    color: rgba(255,255,255,.75);
+
+    font-size: 13px;
+}
+
+.pool-cta {
+    background: var(--cream);
+}
+
+.pool-cta-box {
+    padding: 100px 40px;
+
+    text-align: center;
+
+    background: #fff;
+}
+
+.pool-cta-box h2 {
+    margin-bottom: 35px;
+}
+
+
+/* GALLERY */
+
+.gallery-page {
+    background: var(--cream);
+}
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    grid-auto-rows: 300px;
+
+    gap: 18px;
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+.gallery-item img {
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .6s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-large {
+    grid-row: span 2;
+}
+
+.gallery-wide {
+    grid-column: span 2;
+}
+
+.gallery-caption {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.7)
+    );
+}
+
+.gallery-caption span {
+    margin-right: 10px;
+
+    color: #e2c88e;
+}
+
+
+/* CTA */
 
 .booking-cta {
     position: relative;
@@ -915,20 +1275,19 @@ a {
 
     text-align: center;
 
-    color: #ffffff;
+    color: #fff;
 
     background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85");
 
-    background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-size: cover;
 }
 
 .cta-overlay {
     position: absolute;
     inset: 0;
 
-    background: rgba(11, 34, 28, 0.62);
+    background: rgba(11,34,28,.62);
 }
 
 .cta-content {
@@ -940,9 +1299,15 @@ a {
 }
 
 .cta-content h2 {
-    color: #ffffff;
-
     margin-bottom: 25px;
+
+    font-family: "Cormorant Garamond",serif;
+
+    font-size: clamp(45px,5vw,70px);
+
+    font-weight: 500;
+
+    line-height: 1;
 }
 
 .cta-content h2 span {
@@ -952,28 +1317,26 @@ a {
 .cta-content > p:not(.section-label) {
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,.85);
 
     font-size: 15px;
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* FOOTER */
 
 .footer {
     padding: 70px 6% 25px;
 
     background: var(--dark-2);
 
-    color: #ffffff;
+    color: #fff;
 }
 
 .footer-container {
     max-width: 1250px;
 
-    margin: 0 auto;
+    margin: auto;
 
     display: grid;
 
@@ -987,7 +1350,7 @@ a {
 .footer-brand p {
     margin-top: 15px;
 
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,.55);
 
     font-size: 13px;
 }
@@ -1013,21 +1376,15 @@ a {
 }
 
 .footer-links a {
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,.65);
 
     font-size: 12px;
-
-    transition: 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #ffffff;
 }
 
 .footer-contact p {
     margin-bottom: 8px;
 
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,.65);
 
     font-size: 12px;
 }
@@ -1035,13 +1392,13 @@ a {
 .footer-bottom {
     max-width: 1250px;
 
-    margin: 0 auto;
+    margin: auto;
 
     padding-top: 25px;
 
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,.1);
 
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,.4);
 
     font-size: 10px;
 
@@ -1049,15 +1406,9 @@ a {
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+/* TABLET */
 
-@media (max-width: 1000px) {
-
-    .site-header {
-        padding: 22px 5%;
-    }
+@media(max-width:1000px) {
 
     .nav {
         gap: 18px;
@@ -1071,12 +1422,14 @@ a {
         gap: 50px;
     }
 
-    .room-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .room-grid,
+    .pool-card-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .amenity-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .amenity-grid,
+    .info-grid {
+        grid-template-columns: repeat(2,1fr);
     }
 
     .pool-section {
@@ -1099,11 +1452,9 @@ a {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
-@media (max-width: 768px) {
+@media(max-width:768px) {
 
     .site-header {
         padding: 20px 5%;
@@ -1129,13 +1480,11 @@ a {
 
         flex-direction: column;
 
-        align-items: flex-start;
-
         gap: 0;
 
         padding: 20px 5% 25px;
 
-        background: rgba(16,39,34,0.98);
+        background: rgba(16,39,34,.98);
     }
 
     .nav.open {
@@ -1155,14 +1504,14 @@ a {
     }
 
 
-    /* Hero */
+    /* HERO */
 
     .hero-slider {
-        min-height: 700px;
+        min-height: 680px;
     }
 
     .hero-content {
-        padding-top: 170px;
+        padding-top: 165px;
     }
 
     .hero-eyebrow {
@@ -1172,15 +1521,11 @@ a {
     }
 
     .hero-content h1 {
-        font-size: clamp(55px, 17vw, 90px);
-
-        line-height: 0.9;
+        font-size: clamp(55px,17vw,90px);
     }
 
     .hero-description {
         max-width: 90%;
-
-        margin: 28px auto;
 
         font-size: 13px;
     }
@@ -1192,12 +1537,13 @@ a {
     }
 
     .btn {
-        width: min(280px, 90%);
+        width: min(280px,90%);
     }
 
     .slider-arrow {
         top: auto;
-        bottom: 90px;
+
+        bottom: 85px;
 
         width: 42px;
         height: 42px;
@@ -1211,20 +1557,19 @@ a {
         right: 30%;
     }
 
-    .slider-dots {
-        bottom: 40px;
-    }
-
     .scroll-down {
         display: none;
     }
 
 
-    /* Sections */
+    /* GENERAL */
 
     .section {
         padding: 80px 6%;
     }
+
+
+    /* WELCOME */
 
     .welcome .section-container {
         flex-direction: column;
@@ -1238,15 +1583,11 @@ a {
         height: 450px;
     }
 
-    .welcome-image::before {
-        top: -10px;
-        right: -10px;
-    }
 
+    /* ROOMS */
 
-    /* Rooms */
-
-    .room-grid {
+    .room-grid,
+    .pool-card-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1255,7 +1596,7 @@ a {
     }
 
 
-    /* Pool */
+    /* POOL */
 
     .pool-image {
         height: 400px;
@@ -1266,23 +1607,72 @@ a {
     }
 
 
-    /* Amenities */
+    /* PAGE HERO */
 
-    .amenity-grid {
+    .page-hero {
+        height: 500px;
+    }
+
+
+    /* ROOM PAGE */
+
+    .large-room-card {
+        display: block;
+    }
+
+    .large-room-card.reverse .large-room-image,
+    .large-room-card.reverse .large-room-info {
+        order: initial;
+    }
+
+    .large-room-image {
+        height: 400px;
+
+        min-height: auto;
+    }
+
+    .large-room-info {
+        padding: 40px 30px;
+    }
+
+    .large-room-info h2 {
+        font-size: 45px;
+    }
+
+    .large-room-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    /* POOL RULES */
+
+    .pool-rules-inner {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    /* GALLERY */
+
+    .gallery-grid {
         grid-template-columns: 1fr 1fr;
+
+        grid-auto-rows: 230px;
+    }
+
+    .gallery-large {
+        grid-row: span 2;
+    }
+
+    .gallery-wide {
+        grid-column: span 2;
     }
 
 
-    /* CTA */
-
-    .booking-cta {
-        min-height: 500px;
-
-        background-attachment: scroll;
-    }
-
-
-    /* Footer */
+    /* FOOTER */
 
     .footer-container {
         grid-template-columns: 1fr;
@@ -1293,26 +1683,16 @@ a {
 }
 
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* SMALL MOBILE */
 
-@media (max-width: 480px) {
-
-    .hero-slider {
-        min-height: 650px;
-    }
+@media(max-width:480px) {
 
     .hero-content {
-        padding-top: 155px;
+        padding-top: 150px;
     }
 
     .hero-content h1 {
         font-size: 58px;
-    }
-
-    .hero-description {
-        font-size: 12px;
     }
 
     .slider-prev {
@@ -1323,18 +1703,21 @@ a {
         right: 25%;
     }
 
-    .amenity-grid {
+    .amenity-grid,
+    .info-grid {
         grid-template-columns: 1fr;
     }
 
-    .room-content {
-        padding: 25px;
+    .gallery-grid {
+        grid-template-columns: 1fr;
+
+        grid-auto-rows: 280px;
     }
 
-    .room-bottom {
-        align-items: flex-start;
-
-        flex-direction: column;
+    .gallery-large,
+    .gallery-wide {
+        grid-column: auto;
+        grid-row: auto;
     }
 
 }
